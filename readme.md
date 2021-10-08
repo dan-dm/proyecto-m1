@@ -84,6 +84,9 @@ El código de la aplicación debe mantener el patrón de diseño __MVC__ y se in
                     |_error-handler.js
                     |_auth.js
                     |_...
+                |_routes
+                    |_userRoutes.js
+                    |_...
                 |_Others Helper Modules
                 |_app.js
                 |_server.js
