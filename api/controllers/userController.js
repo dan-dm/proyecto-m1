@@ -105,10 +105,27 @@ const clearUserRoutes = async (req, res, next) => {
     }
 };
 
+
+const deleteUser = async (req, res, next) => {
+    const token = authHandler.getTokenFrom(req);
+    const decodedToken = await authHandler.tokenVerify(token);
+    if (!token || !decodedToken.username) {
+        next(HttpError(401, { message: 'token invalid or missing' }))
+    } else {
+        const user = userModel.getUser({ username: decodedToken.username });
+        if(user.rol=="admin"){
+            console.log(req.query.user);
+            userModel.deleteUser(req.params.user);
+        }
+        res.status(200).json(userModel.getUsers());
+    }
+};
+
 export default {
     register,
     login,
     getUserRoutes,
     addUserRoutes,
-    clearUserRoutes
+    clearUserRoutes,
+    deleteUser,
 };

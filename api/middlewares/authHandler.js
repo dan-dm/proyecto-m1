@@ -46,7 +46,7 @@ const authUser = async (req, res, next) => {
 }
 
 const generateToken = username => {
-    return jwt.sign({username: username},process.env.SECRET, { expiresIn: '20s' });
+    return jwt.sign({username: username},process.env.SECRET, { expiresIn: '300s' });
 }
 
 export default {
