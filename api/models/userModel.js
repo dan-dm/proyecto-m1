@@ -22,7 +22,7 @@ class User {
     deleteUser(username){
         console.log(username)
         users.splice(users.findIndex((v) =>{
-            return v.username == username
+            return v.username === username
           }), 1);
         return "Usuario borrado";
     }

@@ -150,7 +150,7 @@ const deleteUser = async (req, res, next) => {
     } else {
         const user = userModel.getUser({ username: decodedToken.username });
         if (user.rol == "admin") {
-            console.log(req.query.user);
+            
             userModel.deleteUser(req.params.user);
         }
         res.status(200).json(userModel.getUsers());

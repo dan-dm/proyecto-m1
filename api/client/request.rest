@@ -29,8 +29,8 @@ POST https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/login
 Content-Type: application/json
 
 {
-    "username":"user1",
-    "password":"user1"
+    "username":"user2",
+    "password":"user2"
 }
 
 ### Saved user routes
@@ -95,6 +95,26 @@ DELETE https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/routes
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNjM0MTIzMjk3LCJleHAiOjE2MzQxMjM1OTd9.M_Fyodbg6voTto3c-kd0X-g8Vkxo834eN-R0aCgojkQ
 
+### Delete 1 user route
+PUT https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/routes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNjM0MTI1ODMzLCJleHAiOjE2MzQxMjg4MzN9.T-ZPpU4sjZ663y3pfppZIaP-wyJfD_CFGHVrkaPtZOo
+
+{
+    "airline_iata": "3O",
+    "airline_icao": null,
+    "departure_airport_iata": "MAD",
+    "departure_airport_icao": null,
+    "arrival_airport_iata": "TFS",
+    "arrival_airport_icao": null,
+    "codeshare": false,
+    "transfers": 0,
+    "planes": [
+        "320"
+    ]
+  }
+
+
 ################ ADMIN
 ### Login as admin
 POST https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/login
@@ -105,13 +125,14 @@ Content-Type: application/json
     "password":"admin"
 }
 
+
 ### ADMIN List all users
 GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjM0MTI0MzY2LCJleHAiOjE2MzQxMjQ2NjZ9.KcEd2X_Ykfn7yNpD1NNYFr5GY3sWlecMjveT3gqmb6k
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjM0MTI2MDk4LCJleHAiOjE2MzQxMjkwOTh9.AF6HEujLppKWsYfJctRFuFUhksSFoyefF-R-f0EptNo
 
 ### ADMIN Delete all users
-DELETE https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/user1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjM0MTI0MzY2LCJleHAiOjE2MzQxMjQ2NjZ9.KcEd2X_Ykfn7yNpD1NNYFr5GY3sWlecMjveT3gqmb6k
+DELETE https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/user2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjM0MTI2MDk4LCJleHAiOjE2MzQxMjkwOTh9.AF6HEujLppKWsYfJctRFuFUhksSFoyefF-R-f0EptNo
 
 ### ADMIN Delete one route
 PUT https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/routes
