@@ -16,7 +16,7 @@ const register = (req, res, next) => {
                 "userId": userId,
                 "username": body.username,
                 "password": body.password,
-                "rol": "userl",
+                "rol": "user",
                 "routes": body.routes !== undefined ? body.routes : []
             };
             
