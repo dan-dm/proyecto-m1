@@ -106,9 +106,28 @@ Content-Type: application/json
 }
 
 ### ADMIN List all users
-DELETE https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/all
+GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjM0MTI0MzY2LCJleHAiOjE2MzQxMjQ2NjZ9.KcEd2X_Ykfn7yNpD1NNYFr5GY3sWlecMjveT3gqmb6k
 
 ### ADMIN Delete all users
 DELETE https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/user1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjM0MTI0MzY2LCJleHAiOjE2MzQxMjQ2NjZ9.KcEd2X_Ykfn7yNpD1NNYFr5GY3sWlecMjveT3gqmb6k
+
+### ADMIN Delete one route
+PUT https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/routes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjM0MTI0MzY2LCJleHAiOjE2MzQxMjQ2NjZ9.KcEd2X_Ykfn7yNpD1NNYFr5GY3sWlecMjveT3gqmb6k
+
+{
+    "airline_iata": "3O",
+    "airline_icao": null,
+    "departure_airport_iata": "BCN",
+    "departure_airport_icao": null,
+    "arrival_airport_iata": "MAD",
+    "arrival_airport_icao": null,
+    "codeshare": false,
+    "transfers": 0,
+    "planes": [
+        "320"
+    ]
+}

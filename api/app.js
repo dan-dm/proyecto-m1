@@ -1,8 +1,8 @@
 import express from 'express';
-import userRouter from './api/routes/userRouter.js';
-import routesRouter from './api/routes/routesRouter.js';
-import searchRouter from './api/routes/searchRouter.js';
-import clientErrorHandler from './api/middlewares/errorHandler.js';
+import userRouter from './routes/userRouter.js';
+import routesRouter from './routes/routesRouter.js';
+import searchRouter from './routes/searchRouter.js';
+import clientErrorHandler from './middlewares/errorHandler.js';
 // import dotenv from 'dotenv';
 
 // dotenv.config()
