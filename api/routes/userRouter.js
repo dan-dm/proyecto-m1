@@ -20,7 +20,7 @@ router.route('/routes')
     .post(userController.addUserRoutes)
     .delete(userController.clearUserRoutes);
 
-router.route('/delete/:user')
-    .get(userController.deleteUser)
+router.route('/:user')
+    .delete(userController.deleteUser)
 
 export default router;

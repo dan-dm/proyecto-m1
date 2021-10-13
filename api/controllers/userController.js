@@ -4,6 +4,7 @@ import uniqid from 'uniqid';
 import bcrypt from 'bcrypt';
 import authHandler from "../middlewares/authHandler.js"
 
+
 const register = (req, res, next) => {
     try {
         const userId = uniqid();
@@ -15,9 +16,10 @@ const register = (req, res, next) => {
                 "userId": userId,
                 "username": body.username,
                 "password": body.password,
-                "rol": body.rol,
+                "rol": "userl",
                 "routes": body.routes !== undefined ? body.routes : []
             };
+            
             const result = userModel.createUser(user);
             if (result < 0)
                 next(HttpError(400, { message: 'No se pudo registrar' }))
@@ -36,6 +38,7 @@ const login = async (req, res, next) => {
             next(HttpError(400, { message: 'Error en los parámetros de entrada' }))
         } else {
             const result = userModel.getUser({ username: body.username });
+            if ( result.username === "admin" && result )
             if (result === undefined) {
                 next(HttpError(401, { message: 'Username or Password incorrect' }));
             } else {
@@ -141,4 +144,5 @@ export default {
     addUserRoutes,
     clearUserRoutes,
     deleteUser,
+    getUsers
 };
