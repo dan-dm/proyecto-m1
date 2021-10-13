@@ -1,72 +1,68 @@
-### Routes
-GET http://localhost:3000/api/fligthPaths?origin=BCN&destiny=CMN
+################ Search
+### Airlines codes
+GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/airlines
 
 ### Airports codes
-GET http://localhost:3000/api/airports
-
-### Airline codes
-GET http://localhost:3000/api/airlines
+GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/airports
 
 ### Cities codes
-GET http://localhost:3000/api/cities
+GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/cities
 
 ### Countries codes
-GET http://localhost:3000/api/countries
-################################
-POST http://localhost:3000/api/user/register
+GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/countries
+
+### Routes
+GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/routes?origin=BCN&destiny=CMN
+
+################ User
+### Register
+POST https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/register
 Content-Type: application/json
 
 {
-    "userId": "",
-    "username":"user2",
-    "password":"user2",
-    "rol":"admin",
-    "routes":[{}]
-
-},
-{
-    "userId": "",
-    "username":"user3",
-    "password":"user3",
-    "rol":"admin",
-    "routes":[{}]
-
-},
-{
-    "userId": "",
-    "username":"user4",
-    "password":"user4",
-    "rol":"admin",
-    "routes":[{}]
-
+    "username":"user1",
+    "password":"user1"
 }
 
-################################
-POST http://localhost:3000/api/user/register
+### Login
+POST https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/login
 Content-Type: application/json
 
 {
-    "userId": "",
-    "username":"user4",
-    "password":"user4",
-    "rol":"admin",
-    "routes":[{}]
-
+    "username":"user1",
+    "password":"user1"
 }
 
-################################
-POST http://localhost:3000/api/user/login
+### Saved user routes
+GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/routes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNjM0MTIzMjk3LCJleHAiOjE2MzQxMjM1OTd9.M_Fyodbg6voTto3c-kd0X-g8Vkxo834eN-R0aCgojkQ
+
+### Add user route (1)
+POST https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/routes
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNjM0MTIzMjk3LCJleHAiOjE2MzQxMjM1OTd9.M_Fyodbg6voTto3c-kd0X-g8Vkxo834eN-R0aCgojkQ
 
 {
-    "username":"user2",
-    "password":"user2"
+    "airline_iata": "3O",
+    "airline_icao": null,
+    "departure_airport_iata": "BCN",
+    "departure_airport_icao": null,
+    "arrival_airport_iata": "MAD",
+    "arrival_airport_icao": null,
+    "codeshare": false,
+    "transfers": 0,
+    "planes": [
+        "320"
+    ]
 }
-########
-POST http://localhost:3000/api/user/flightpaths
-Content-Type: application/json
 
-{
+### Add user routes ( array )
+POST https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/routes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNjM0MTIzMjk3LCJleHAiOjE2MzQxMjM1OTd9.M_Fyodbg6voTto3c-kd0X-g8Vkxo834eN-R0aCgojkQ
+
+[
+  {
     "airline_iata": "3O",
     "airline_icao": null,
     "departure_airport_iata": "BCN",
@@ -76,29 +72,39 @@ Content-Type: application/json
     "codeshare": false,
     "transfers": 0,
     "planes": [
-    "320"
+        "320"
     ]
-}
-### Routes
-GET http://localhost:3000/api/user/flightpaths
-### Routes
-DELETE http://localhost:3000/api/user/flightpaths
-Content-Type: application/json
-
+},
 {
     "airline_iata": "3O",
     "airline_icao": null,
-    "departure_airport_iata": "BCN",
+    "departure_airport_iata": "MAD",
     "departure_airport_icao": null,
-    "arrival_airport_iata": "CMN",
+    "arrival_airport_iata": "TFS",
     "arrival_airport_icao": null,
     "codeshare": false,
     "transfers": 0,
     "planes": [
-    "320"
+        "320"
     ]
+  }
+]
+
+### Delete user routes
+DELETE https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/routes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNjM0MTIzMjk3LCJleHAiOjE2MzQxMjM1OTd9.M_Fyodbg6voTto3c-kd0X-g8Vkxo834eN-R0aCgojkQ
+
+################ ADMIN
+### Login as admin
+POST https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/login
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"admin"
 }
 
-### Routes
-GET http://localhost:3000/api/user/delete/user2
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXI0IiwiaWF0IjoxNjM0MTE3NDM3LCJleHAiOjE2MzQxMTc3Mzd9.dZ-9YrYp2zrLs-hDSNTjy_xOKZ1Zfm6u-u3hAooyfmc
+### ADMIN DELETE users
+DELETE https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/user1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjM0MTIzNzczLCJleHAiOjE2MzQxMjQwNzN9.QkLoudID9bId_Pocywbf9lYPKiMibTko92ZGH5N74Vg

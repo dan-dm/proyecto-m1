@@ -23,4 +23,7 @@ router.route('/routes')
 router.route('/:user')
     .delete(userController.deleteUser)
 
+router.route('/all')
+    .get(userController.getUsers);
+    
 export default router;
