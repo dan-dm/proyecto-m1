@@ -18,12 +18,13 @@ router.use(authHandler.authUser);
 router.route('/routes')
     .get(userController.getUserRoutes)
     .post(userController.addUserRoutes)
+    .put(userController.deleteUserRoute)
     .delete(userController.clearUserRoutes);
 
 router.route('/:user')
     .delete(userController.deleteUser)
 
-router.route('/all')
+router.route('/')
     .get(userController.getUsers);
-    
+
 export default router;

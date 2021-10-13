@@ -105,6 +105,10 @@ Content-Type: application/json
     "password":"admin"
 }
 
-### ADMIN DELETE users
+### ADMIN List all users
+DELETE https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/all
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjM0MTI0MzY2LCJleHAiOjE2MzQxMjQ2NjZ9.KcEd2X_Ykfn7yNpD1NNYFr5GY3sWlecMjveT3gqmb6k
+
+### ADMIN Delete all users
 DELETE https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/user1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjM0MTIzNzczLCJleHAiOjE2MzQxMjQwNzN9.QkLoudID9bId_Pocywbf9lYPKiMibTko92ZGH5N74Vg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjM0MTI0MzY2LCJleHAiOjE2MzQxMjQ2NjZ9.KcEd2X_Ykfn7yNpD1NNYFr5GY3sWlecMjveT3gqmb6k

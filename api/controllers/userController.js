@@ -19,7 +19,7 @@ const register = (req, res, next) => {
                 "rol": "user",
                 "routes": body.routes !== undefined ? body.routes : []
             };
-            
+
             const result = userModel.createUser(user);
             if (result < 0)
                 next(HttpError(400, { message: 'No se pudo registrar' }))
@@ -38,7 +38,7 @@ const login = async (req, res, next) => {
             next(HttpError(400, { message: 'Error en los parámetros de entrada' }))
         } else {
             const result = userModel.getUser({ username: body.username });
-            
+
             if (result === undefined) {
                 next(HttpError(401, { message: 'Username or Password incorrect' }));
             } else {
@@ -86,12 +86,32 @@ const addUserRoutes = async (req, res, next) => {
                 routesArr.push(item);
             }
         } else {
-            routesArr = [
-                ...routesArr,
-                newRoutesArr,
-            ];
+            if (routesArr.findIndex(element => JSON.stringify(element) === JSON.stringify(newRoutesArr)) < 0) {
+                routesArr = [
+                    ...routesArr,
+                    newRoutesArr,
+                ];
+            }
         }
         user.routes = routesArr;
+        res.status(200).json(user.routes);
+    }
+};
+
+//borra la ruta especifica del usuario
+const deleteUserRoute = async (req, res, next) => {
+    const token = authHandler.getTokenFrom(req);
+    const decodedToken = await authHandler.tokenVerify(token);
+    if (!token || !decodedToken.username) {
+        next(HttpError(401, { message: 'token invalid or missing' }))
+    } else {
+        const user = userModel.getUser({ username: decodedToken.username });
+        let delRoute = req.body;
+        let route = user.routes.findIndex(element => JSON.stringify(element) === JSON.stringify(delRoute));
+        if (route >= 0) {
+            user.routes.splice(route, 1);
+            return "Ruta borrada";
+        }
         res.status(200).json(user.routes);
     }
 };
@@ -107,16 +127,16 @@ const clearUserRoutes = async (req, res, next) => {
         res.status(200).json(user.routes);
     }
 };
- 
-const getUsers  = async (req, res, next) => {
+
+const getUsers = async (req, res, next) => {
     const token = authHandler.getTokenFrom(req);
     const decodedToken = await authHandler.tokenVerify(token);
     if (!token || !decodedToken.username) {
         next(HttpError(401, { message: 'token invalid or missing' }))
     } else {
         const user = userModel.getUser({ username: decodedToken.username });
-        if(user.rol=="admin"){
-            
+        if (user.rol == "admin") {
+
             res.status(200).json(userModel.getUsers());
         }
     }
@@ -129,7 +149,7 @@ const deleteUser = async (req, res, next) => {
         next(HttpError(401, { message: 'token invalid or missing' }))
     } else {
         const user = userModel.getUser({ username: decodedToken.username });
-        if(user.rol=="admin"){
+        if (user.rol == "admin") {
             console.log(req.query.user);
             userModel.deleteUser(req.params.user);
         }
@@ -144,5 +164,6 @@ export default {
     addUserRoutes,
     clearUserRoutes,
     deleteUser,
-    getUsers
+    getUsers,
+    deleteUserRoute
 };
