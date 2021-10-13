@@ -38,7 +38,7 @@ const login = async (req, res, next) => {
             next(HttpError(400, { message: 'Error en los parámetros de entrada' }))
         } else {
             const result = userModel.getUser({ username: body.username });
-            if ( result.username === "admin" && result )
+            
             if (result === undefined) {
                 next(HttpError(401, { message: 'Username or Password incorrect' }));
             } else {
