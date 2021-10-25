@@ -1,0 +1,136 @@
+################ Search
+### Airlines codes
+GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/airlines
+
+### Airports codes
+GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/airports
+
+### Cities codes
+GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/cities
+
+### Countries codes
+GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/countries
+
+### Routes
+GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/routes?origin=BCN&destiny=CMN
+
+################ User
+### Register
+POST https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/register
+Content-Type: application/json
+
+{
+    "username":"user2",
+    "password":"user2"
+}
+
+### Login
+POST https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/login
+Content-Type: application/json
+
+{
+    "username":"user2",
+    "password":"user2"
+}
+
+### Saved user routes
+GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/routes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNjM0MTI3MDIyLCJleHAiOjE2MzQxMzAwMjJ9.2qL2BaETGaP-FQQ6mJHbCAkDFDTdG0KMV7vLezlgajI
+
+### Add user route (1)
+POST https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/routes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNjM0MTI3MDIyLCJleHAiOjE2MzQxMzAwMjJ9.2qL2BaETGaP-FQQ6mJHbCAkDFDTdG0KMV7vLezlgajI
+
+{
+    "airline_iata": "3O",
+    "airline_icao": null,
+    "departure_airport_iata": "BCN",
+    "departure_airport_icao": null,
+    "arrival_airport_iata": "MAD",
+    "arrival_airport_icao": null,
+    "codeshare": false,
+    "transfers": 0,
+    "planes": [
+        "320"
+    ]
+}
+
+### Add user routes ( array )
+POST https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/routes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNjM0MTI3MDIyLCJleHAiOjE2MzQxMzAwMjJ9.2qL2BaETGaP-FQQ6mJHbCAkDFDTdG0KMV7vLezlgajI
+
+[
+  {
+    "airline_iata": "3O",
+    "airline_icao": null,
+    "departure_airport_iata": "BCN",
+    "departure_airport_icao": null,
+    "arrival_airport_iata": "CMN",
+    "arrival_airport_icao": null,
+    "codeshare": false,
+    "transfers": 0,
+    "planes": [
+        "320"
+    ]
+},
+{
+    "airline_iata": "3O",
+    "airline_icao": null,
+    "departure_airport_iata": "MAD",
+    "departure_airport_icao": null,
+    "arrival_airport_iata": "TFS",
+    "arrival_airport_icao": null,
+    "codeshare": false,
+    "transfers": 0,
+    "planes": [
+        "320"
+    ]
+  }
+]
+### Delete 1 user route
+PUT https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/routes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNjM0MTI3MDIyLCJleHAiOjE2MzQxMzAwMjJ9.2qL2BaETGaP-FQQ6mJHbCAkDFDTdG0KMV7vLezlgajI
+
+{
+    "airline_iata": "3O",
+    "airline_icao": null,
+    "departure_airport_iata": "MAD",
+    "departure_airport_icao": null,
+    "arrival_airport_iata": "TFS",
+    "arrival_airport_icao": null,
+    "codeshare": false,
+    "transfers": 0,
+    "planes": [
+        "320"
+    ]
+  }
+
+### Delete user routes
+DELETE https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/routes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNjM0MTI3MDIyLCJleHAiOjE2MzQxMzAwMjJ9.2qL2BaETGaP-FQQ6mJHbCAkDFDTdG0KMV7vLezlgajI
+
+
+
+################ ADMIN
+### Login as admin
+POST https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/login
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"admin"
+}
+
+
+### ADMIN List all users
+GET https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjM0MTI3MDk4LCJleHAiOjE2MzQxMzAwOTh9.Yj1gFMcDvVnPOZCMS7VZfV5D6rz4yhCn9jo-ldhYUyY
+
+### ADMIN Delete all users
+DELETE https://proyecto-m1-enric-y-dan.herokuapp.com/api/user/user2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjM0MTI2MDk4LCJleHAiOjE2MzQxMjkwOTh9.AF6HEujLppKWsYfJctRFuFUhksSFoyefF-R-f0EptNo
+
